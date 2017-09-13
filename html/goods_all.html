@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		
+		<link rel="stylesheet" type="text/css" href="../css/index.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/less/goods.css"/>
+		<script src="../js/jquery-1.11.1.min.js"></script>
+		<script src="../js/cookie.js"></script>
+
+		
+	</head>
+	
+	<body style="height: auto;" bgcolor="#fbfaf9">
+		<div id="header">
+			
+		</div>
+		<div class="nav">
+			
+		</div>
+		<div class="main">
+			<h2></h2>
+			<div class="prolist" style="position: relative;">
+				<div class="pic_wrap">
+					<div class="goods_pic">
+						<div class="img" style="position: absolute; cursor: move;width: 220px;height: 360px;">
+							<div class="mask"></div>
+							<div class="cover"></div>
+							<img src="../img/qiagou/01.jpg"/>
+							
+						</div>
+					</div>
+					<div class="pic_s">
+						<span id="left_btn" class="disable"></span>
+						<div class="pic_s_wrap">
+							<a style="border-color: #5A463D;"><img src="../img/qiagou/01.jpg"/></a>
+							
+						</div>
+						
+						<span id="right_btn" class="disable"></span> 
+					</div>
+					<div class="pic_b">
+						<img src="../img/qiagou/01.jpg" />
+						
+					</div>
+				</div>
+				<div class="goods_info">
+					<p class="pname">
+						贝尔莱丹魄干红葡萄酒（里奥哈）2013
+					</p>
+					<p class="discount">
+						品牌特惠，满1000即赠竖琴醒酒器1个，多买多赠，数量有限，赠完即止！
+					</p>
+					<p class="pingjia">
+						商品评分：<strong></strong>&emsp;评论数：<span class="p_num">177</span>近期售出数：
+						<span class="soldNum">26731</span>
+					</p>
+					<h1>
+						<span id="ico">
+							
+						</span>
+					</h1>
+					<div class="activity">
+						<div class="activity_info">
+							
+						</div>
+						<p class="price">
+							也买价：<span>￥<strong class="p_price">129.0</strong></span>
+						</p>
+					</div>
+					<div class="add_shopcart">
+						<p class="send_city">
+							配送城市：
+							<span id="select_city">
+								上海市
+							</span>
+							<span id="city">
+								上海市
+							</span>有货
+						</p>
+						<p class="p_num">
+							<span style="display: inline-block;">选择数量：</span><span class="reduceNum disable"></span>
+							<input type="text" id="num" value="1"/>
+							<span class="addNum"></span>
+						</p>
+						<input type="button" name="btn" id="btn" value="" />
+					</div>
+					<p class="quan">该商品不支持礼品卡抵扣</p>
+				</div>
+			</div>
+			<p class="fri_link">
+				<span class="jgz">加关注</span><span class="fxd">分享到：</span>
+				<span class="jt"></span>
+			</p>
+			
+			<div class="menu_list">
+				<div class="menu_container">
+					<li class="p_info">商品详情</li>
+					<li class="pj">用户评价</li>
+					<li class="consult">商品咨询</li>
+					<p  class="shopcart_2" id="btn"></p>
+				</div>
+			</div>
+			<div id="xiangqing">
+				<img src="../img/xingqing/1.jpg"/>
+				<img src="../img/xingqing/2.jpg"/>
+				<img src="../img/xingqing/302.jpg"/>
+				<img src="../img/xingqing/303.jpg"/>
+				<img src="../img/xingqing/304.jpg"/>
+				<img src="../img/xingqing/305.jpg"/>
+			</div>
+			<img id="pinglun" src="../img/images/pinglun_03.jpg" style="display: block;margin-bottom: 30px;"/>
+			<img id="zixun" src="../img/images/zixun_03.jpg" style="display: block;margin-bottom: 30px;"/>
+		</div>
+		<div id="footer">
+			
+		</div>
+		<div id="mycenter">
+			<li class="me"><a href="javascript:void();"></a></li>
+			<li class="cart">
+				<a href="javascript:void();" style="background-position: -20px 1px;"></a>
+				<strong>购物车</strong>
+				<span class="cart_num">0</span>
+			</li>
+			<li><a href="javascript:void();" style="background-position-x: -40px;"></a></li>
+			<li><a href="javascript:void();" style="background-position-x: -60px;"></a></li>
+			<li><a href="javascript:void();" style="background-position-x: -161px;"></a></li>
+			<li><a href="javascript:void();" style="background-position-x: -141px;"></a></li>
+			<li class="mycode"><a href="javascript:void();" style="background-position-x: -100px;"></a></li>
+		</div>
+	</body>
+</html>
+<script type="text/javascript">
+	function cartNum(){
+		var arr=[];
+		arr=getCookie("shoplist");
+		var oCartNum=0;
+		for(var j in arr){
+			oCartNum+=arr[j].count;
+		}
+		$(".cart_num").html(oCartNum);
+	}
+	
+	$(function(){
+		var w=$(window).width();
+		$("#mycenter").animate({"left":(w-40)},800);
+		cartNum();
+	})
+	
+	//设置商品的名称，价格
+//	http://127.0.0.1/yesmywine/html/goods_all.html?pimg=${three2.list[i].img}&price=${three2.list[i].price}&soldNum=${three2.list[i].name}&pname=${three2.list[i].name
+	var htp=location.href;
+	var pArr=htp.split("?")[1];
+	var pimg=pArr.split("&")[0].split("=")[1];
+	var price=pArr.split("&")[1].split("=")[1];
+	var soldNum=pArr.split("&")[2].split("=")[1];
+	var pname=pArr.split("&")[3].split("=")[1];
+	var name=decodeURIComponent(pname);
+	var count=parseInt( $("#num").val() );
+	$(".img img")[0].src="../img/qiagou/"+pimg;
+	$(".pic_s_wrap img")[0].src="../img/qiagou/"+pimg;
+	$(".pic_b img")[0].src="../img/qiagou/"+pimg;
+	$(".pname").html(name);
+	$(".soldNum").html(soldNum);
+	$(".p_price").html(price);
+	//console.log(htp);
+	//console.log(name);
+	
+	//商品数量加减
+	$(".addNum").click(function(){
+		count++;
+		$("#num").val(count);
+		if(count>1){
+			$(".reduceNum").removeClass("disable");
+		}
+	})
+	$(".reduceNum").click(function(){
+		if(count>1){
+			count--;
+			$("#num").val(count);
+				
+		}else if(count==1){
+			$(this).addClass("disable");
+		}else{
+			return;
+		}
+	})
+//存入数据cookie
+	$("#btn").click(function(){
+		
+		var arr=[];
+		var flag=true;
+		var _json={
+			"name":name ,
+			"img": pimg ,
+			"price": price,
+			"soldNum" :soldNum ,
+			"count":count
+		}
+		//再次点击相同产品
+		var cookieInfo=getCookie("shoplist");
+		//console.log(cookieInfo)
+		if(cookieInfo!=0){
+			arr=cookieInfo;
+			//console.log(arr);
+			for(var i=0;i<arr.length;i++){
+				if(_json.name==arr[i].name&&_json.price==arr[i].price){
+					arr[i].count+=count;
+					console.log(111)
+					flag=false;
+					break;
+				}
+			}
+		}
+		
+		if(flag){
+			arr.push(_json);
+		}
+		
+		setCookie("shoplist",JSON.stringify(arr));
+		//location.href="http://127.0.0.1/yesmywine/html/shopcart.html";
+		//console.log(document.cookie);
+		
+		//加入购物车动画
+		var cartLeft=$(".cart").offset().left;
+		var cartTop=$(".cart").offset().top;
+		
+		$(".img img").clone().css({"width":110,"height":180,"position":"absolute","left":400,"top":300,"z-index":99}).appendTo($("body"))
+					 .animate({"left":(cartLeft+20),"top":(cartTop+60),"width":0,"height":0},1000,function(){
+					 	$(this).remove();
+					 	cartNum();
+					 })
+	})
+
+</script>
+<script type="text/javascript">
+	//载入头部与尾部
+	$("#header").load("public.html  #header-t-wrap,#header-b",function(){
+		$("#header-t").css("width","960px");
+		$("#header-b>img").eq(1).remove().end().parent().css("width",960);
+		$(".txt-keyword").css("border-color","#73584a");
+		$(".s-button").css("background","#73584a");
+		
+		//搜索栏
+		$(".txt-keyword").focus(function(){
+			if("输入您要找的商品名称"==$(this).val()){
+				$(this).val("");
+			}
+		}).blur(function(){
+			if(!$(this).val()){
+				$(this).val("输入您要找的商品名称")
+			}else{
+				return;
+			}
+		})
+		//购物车跳转
+		$(".h-shopcart2,.cart").click(function(){
+			location.href="http://127.0.0.1/yesmywine/html/shopcart.html"
+		})
+	
+	})
+	$("#footer").load("public.html .footer-top,.footer-center,.footer-bottom",function(){
+		$("#footer-top-wrap").css("width","960px");
+		$(".footer-promise").css("width","320px");
+		$(".footer-service").css("width","320px");
+		$(".footer-serv").css("width","95px")
+		$(".footer-focus").css("width","320px");
+		$(".erweima").css("margin","20px 0 25px 0");
+	})
+	$(".nav").load("public.html .nav",function(){
+		$(".nav").css({"background":"#7e0001"});
+		$(".nav-line").css("width",960);
+		$(".nav-line>li").find("a").css("margin","0 12px").end().last().remove().end().css("background","#7e0001");
+		$(".nav-line>li").eq(7).css("margin-left",20);
+		$(".nav-line>li").eq(8).css("margin-left",20);
+		$(".nav-line>li").mouseenter(function(){
+			$(this).css("background","#643e35")
+		}).mouseleave(function(){
+			$(this).css("background","#7e0001")
+		})
+		$(".wine-center").css("background","#624b40");
+		$("#menu").css({"height":460,"background":"#eeeeee"}).hide();
+		$(".menu").mouseenter(function(){
+			$("#menu").stop().slideDown(300);
+		})
+		$(".menu").mouseleave(function(){
+			$("#menu").stop().slideUp(300);
+		})
+		
+		$(".select_menu1_select1,.select_menu2_select,.select_menu3_select,.select_menu4_select,.select_menu5_select,.select_menu6_select").find("a").mouseenter(function(){
+			colorAll=$(this).css("color");
+			$(this).css("color", "#d3161b");
+			$(this).mouseleave(function(){
+				$(this).css("color",colorAll);
+			})
+		})
+		
+		//第一子菜单
+		$("#select_menu1").mouseenter(function(e){
+			var e=event||e;
+			e.stopPropagation();
+			$(".select_menu1_select1").css({"display":"block","z-index":11}).stop().animate({"left":200,"opacity":1},500);
+			
+		}).mouseleave(function(){
+			$(".select_menu1_select1").stop().animate({"opacity":0},10,function(){
+				$(this).css({"left":170,"display":"none"});
+				
+			})
+		})
+		//第二子菜单
+		$("#select_menu2").mouseenter(function(){
+			$(".select_menu2_select").css({"display":"block","z-index":11}).stop().animate({"left":200,"opacity":1},500);
+			
+		}).mouseleave(function(){
+			$(".select_menu2_select").stop().animate({"opacity":0},10,function(){
+				$(this).css({"left":170,"display":"none"});
+				
+			})
+		})
+		//第三子菜单
+		$("#select_menu3").mouseenter(function(){
+			$(".select_menu3_select").css({"display":"block","z-index":11}).stop().animate({"left":200,"opacity":1},500);
+			
+		}).mouseleave(function(){
+			$(".select_menu3_select").stop().animate({"opacity":0},10,function(){
+				$(this).css({"left":170,"display":"none"});
+				
+			})
+		})
+		//第四子菜单
+		$("#select_menu4").mouseenter(function(){
+			$(".select_menu4_select").css({"display":"block","z-index":11}).stop().animate({"left":200,"opacity":1},500);
+			
+		}).mouseleave(function(){
+			$(".select_menu4_select").stop().animate({"opacity":0},10,function(){
+				$(this).css({"left":170,"display":"none"});
+				
+			})
+		})
+		//第五子菜单
+		$("#select_menu5").mouseenter(function(){
+			$(".select_menu5_select").css({"display":"block","z-index":11}).stop().animate({"left":200,"opacity":1},500);
+			
+		}).mouseleave(function(){
+			$(".select_menu5_select").stop().animate({"opacity":0},10,function(){
+				$(this).css({"left":170,"display":"none"});
+				
+			})
+		})
+		//第六子菜单
+		$("#select_menu6").mouseenter(function(){
+			$(".select_menu6_select").css({"display":"block","z-index":11}).stop().animate({"left":200,"opacity":1},500);
+			
+		}).mouseleave(function(){
+			$(".select_menu6_select").stop().animate({"opacity":0},10,function(){
+				$(this).css({"left":170,"display":"none"});
+				
+			})
+		})
+	})
+	
+	//放大镜
+	$(".pic_s_wrap a").mouseenter(function(){
+		indexImg=$(this).index();
+		$(this).css("border-color","#5A463D").siblings().css("border-color","#f1edea");
+		$(".img img").eq(indexImg).show().siblings("img").hide();
+		$(".pic_b img").eq(indexImg).show().siblings().hide();
+		
+		$(".mask").css("background","url(../img/pic/con-1-"+(indexImg+1)+"-m.jpg)")
+	})
+	
+	//$(".mask").css("background","url(../img/qiagou/"+pimg);
+	$(".mask").css("background","none")
+	$(".goods_pic").mouseenter(function(){
+		$(".mask").show();
+		//$(".cover").show();
+		$(".pic_b").show();
+		$(".mask").css("background","rgba(160,160,160,0.2)")
+		$(".img").mousemove(function(e){
+			var e=e||event;
+			var disX=e.offsetX;
+			var disY=e.offsetY;
+			var x=e.pageX-$(this).offset().left-$(".mask").width()/2;
+			var y=e.pageY-$(this).offset().top-$(".mask").height()/2;
+			var maxX=$(this).width()-$(".mask").width();
+			var maxY=$(this).height()-$(".mask").height();
+			
+			//console.log($(this).offset().left)
+			x=Math.min(Math.max(0,x),maxX);
+			y=Math.min(Math.max(0,y),maxY);
+			$(".mask").css({"left":x,"top":y,"background-position-x":-x,"background-position-y":-y});
+			var pLeft=x*380/220;
+			var pTop=y*620/360;
+			
+			$(".pic_b img").css({"left":-pLeft,"top":-pTop})
+		
+		})
+	}).mouseleave(function(){
+			$(".mask").hide();
+			//$(".cover").hide();
+			$(".pic_b").hide();
+	})
+	
+	//商品详情及评价栏吸顶楼梯效果
+	window.onscroll=function(){
+		var sTop=$(document).scrollTop();
+		//var h=$(".menu_container").offset().top;
+		var h2=$("#pinglun").offset().top;
+		var h3=$("#zixun").offset().top;
+		//console.log(h)
+		//console.log(h2)
+		//console.log(h3)
+		$(".menu_container").show();
+		if(sTop>793){
+			$(".menu_container").css({"position":"fixed","top":0})
+		}else{
+			$(".menu_container").css({"position":"static"})
+		}
+		
+		
+		if(sTop>=5436){
+			$(".pj").css({"background":"#77493a","color":"white"}).siblings("li").css({"background":"#f3f0ed","color":"#74463a"});
+		}
+		if(sTop>=8478){
+			$(".consult").css({"background":"#77493a","color":"white"}).siblings("li").css({"background":"#f3f0ed","color":"#74463a"});
+		}
+		if(sTop<5436){
+			$(".p_info").css({"background":"#77493a","color":"white"}).siblings("li").css({"background":"#f3f0ed","color":"#74463a"});
+		}
+	}	
+		$(".p_info").click(function(){
+			$("body,html").stop().animate({"scrollTop":793});
+			$(this).css({"background":"#77493a","color":"white"}).siblings("li").css({"background":"#f3f0ed","color":"#74463a"});
+			$(".menu_container").hide();
+		})
+		$(".pj").click(function(){
+			$("body,html").stop().animate({"scrollTop":5436});
+			$(this).css({"background":"#77493a","color":"white"}).siblings("li").css({"background":"#f3f0ed","color":"#74463a"});
+			$(".menu_container").hide();
+		})
+		$(".consult").click(function(){
+			$("body,html").stop().animate({"scrollTop":8478});
+			$(this).css({"background":"#77493a","color":"white"}).siblings("li").css({"background":"#f3f0ed","color":"#74463a"});
+			$(".menu_container").hide();
+		})
+	
+	
+</script>
+<script type="text/javascript" src="../js/selectmenu.js"></script>

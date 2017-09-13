@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="../js/jquery-1.11.1.min.js"></script>
+		
+		<link rel="stylesheet" href="../css/less/findpwd.css" />
+	</head>
+	<body bgcolor="#ebebe8">
+		<div id="header_wrap">
+			<div id="header">
+				<img src="../img/logo2.png" style=" height:70px;margin-bottom: 10px;"/>
+				<img src="../img/logo.png"/>
+			</div>
+		</div>
+		
+			<div id="section">
+				<img src="../img/findpwd_bg.jpg" style=" display:block; margin: 0 auto;"/>
+				<p class="pwd_process" style="background-position-y: -25px;"></p>
+				<div id="findstep">
+					<p class="findway" style="margin-bottom: 50px;"><strong>已发送验证码到你的手机，输入验证码：</strong>
+					</p>
+					<p class="txt"><input type="text" value="   输入验证码" class="text" /></p>
+					<input type="button" value="提交" id="btn"/>
+				</div>
+				<div class="warn">
+					
+					<p id="tip" style="margin-top: 20px;">
+						1.验证码有效期2小时<br />
+						2.没有收到验证码？<a href="#">重新发送验证码</a>
+					</p>
+				</div>
+			</div>
+		
+		
+	</body>
+</html>
+<script type="text/javascript">
+	window.onload=function(){
+		$("#btn").click(function(){
+			location.href="http://127.0.0.1/yesmywine/html/findpwd3.html";
+			
+		})
+	}
+</script>

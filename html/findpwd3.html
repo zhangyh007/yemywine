@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="../js/jquery-1.11.1.min.js"></script>
+		
+		<link rel="stylesheet" href="../css/less/findpwd.css" />
+	</head>
+	<body bgcolor="#ebebe8">
+		<div id="header_wrap">
+			<div id="header">
+				<img src="../img/logo2.png" style=" height:70px;margin-bottom: 10px;"/>
+				<img src="../img/logo.png"/>
+			</div>
+		</div>
+		
+			<div id="section">
+				<img src="../img/findpwd_bg.jpg" style=" display:block; margin: 0 auto;"/>
+				<p class="pwd_process" style="background-position-y: -50px;"></p>
+				<div id="findstep">
+					<p class="txt">
+						&emsp;设置新密码：<input type="text" class="text" value="    输入6-16字母和数字" /><br /><br />
+						再次输入密码：<input type="text" class="text2" value="    再次输入密码"/>
+					</p>
+					<h2 class="phone-pro  hide" id="phone-pro2">
+							<img src="../img/images/close_03.jpg"/ style="display: inline-block;">
+							<span class="ph-verify pro_pwd">密码不一致</span>
+					</h2>
+					
+					<br />
+					<input type="button" value="提交" id="btn" style="margin-left: 112px;"/>
+				</div>
+				
+			</div>
+		
+		<div id="footer" ></div>
+	</body>
+</html>
+<script type="text/javascript">
+	window.onload=function(){
+		
+		//密码设置
+		var pwdflag=null;
+		$(".text").on({
+			focus: function(){
+				if($(this).val()=="    输入6-16字母和数字"){
+					$(this).val("");
+				}else{
+					return;
+				}
+			},
+			blur: function(){
+				var reg=/^[\d|a-z|A-Z]{6,16}$/;
+				if(!$(this).val()){
+					$(this).val("    输入6-16字母和数字");
+				}else if(reg.test($(this).val())){
+					pwdflag=true;
+					//$("#phone-pro4").addClass("hide");
+					//console.log(pwdflag);
+				}else{
+					$("#phone-pro4").removeClass("hide");
+					pwdflag=false;
+				}
+			}
+		})
+		//确认密码
+		var pwd2flag=null;
+		$(".text2").on({
+			focus: function(){
+				if($(this).val()=="    再次输入密码"){
+					$(this).val("");
+				}else{
+					return;
+				}
+			},
+			blur: function(){
+				
+				if(!$(this).val()){
+					$(this).val("    再次输入密码");
+				}else if($(this).val()==$(".text").val()){
+					pwd2flag=true;
+					$("#phone-pro2").addClass("hide");
+					//console.log(pwd2flag);
+				}else{
+					$("#phone-pro2").removeClass("hide");
+					pwd2flag=false;
+				}
+			}
+		})
+		
+		$("#btn").click(function(){
+			if(pwd2flag&&pwdflag){
+				location.href="http://127.0.0.1/yesmywine/html/findpwd4.html";
+			}
+		})
+	}
+</script>

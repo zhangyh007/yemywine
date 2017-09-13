@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="../css/index.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/less/shopcart1.css"/>
+		<script src="../js/jquery-1.11.1.min.js"></script>
+		<script src="../js/cookie.js"></script>
+	</head>
+	<body>
+		<div class="header_top" style="background: #ece7e3;">
+			
+		</div>
+		<div class="header" style="background: #f1eeed;border-bottom: 2px solid #7e0001;">
+			<div class="header_wrap"  style="width:960px;height: 100px;margin: 0 auto;display: flex;align-items: center;justify-content: space-between;">
+				<a href="../index.html"><img src="../img/logo2.png"/></a>
+				<div id="header_right" style="background: url(../img/cart_step.png) no-repeat ; height: 37px; width: 479px;">
+				</div>
+			</div>
+		</div>
+		<div id="main_wrap">
+		<div id="main">
+			<p class="warn_tip">
+				<i>温馨提示：</i>也买商城订单可以合并下单啦。无论您的购物车里有几家也买商家的商品都可以合并成一张订单付款。
+				<strong></strong>
+			</p>
+			
+			<div class="plist">
+				<p class="title">
+					<span class="radus"></span>
+					也买酒配送
+					<i>0</i>
+				</p>
+				<div class="p_name">
+					<li style="width: 80px;display: flex;align-items: center;"><input type="checkbox" class="qx" />全选</li>
+					<li style="width: 400px;">商品名称</li>
+					<li style="width: 80px;">单价</li>
+					<li style="width: 150px;"> 数量</li>
+					<li style="width: 80px;">小计</li>
+				</div>
+				<div class="content">
+					购物车空空如也，快去<a href="http://127.0.0.1/yesmywine/index.html" style="color:#650001;font-size: 16px;text-decoration: underline;">首页</a>选购吧！
+				</div>
+				<!--<div class="p_info">
+					<li style="width: 80px;"><input type="checkbox" class="zx"/></li>
+					
+					<li class="p_infoname" style="width: 400px;"><a href="../index.html"><img src="../img/qiagou/1.jpg" alt="" /></a></li>
+					<li class="p_price" style="width: 80px;">¥<strong>0</strong></li>
+					<li class="p_num" style="width: 150px;"><span class="add">+</span>
+						<strong>1</strong>
+						<span class="reduce">-</span>
+					</li>
+					<li class="sum" style="width: 80px;">¥<strong>0</strong></li>
+					<li class="delete" style="width: 140px;">
+						<a href="" class="save">加入收藏夹</a><br />
+						<a href="" class="deletebtn">删除</a>
+					</li>
+				</div>-->
+				<p class="delete_all">
+					<input type="checkbox" class="qx"/>全选
+					<span class="delete_all_btn">批量删除</span>
+					<span class="save_all_btn">批量加入收藏夹</span>
+				</p>
+			</div>
+			<div class="jisuan">
+				<li class="p_number">商品件数：<strong class="all_num">0</strong>件</li>
+				<li class="p_sum">产品总价：<strong>¥</strong><strong class="all_sum">0</strong></li>
+				<li class="hdyh"><span>活动优惠：</span>¥<strong>0</strong></li>
+				<li class="yhq"><span>优惠券：</span>¥<strong>0</strong></li>
+			</div>
+			<img src="../img/images/tuijian_03.jpg" style="display: block;margin-top: 40px;"/>
+		</div>
+		</div>
+		<div class="footer">
+			
+		</div>
+		<div id="jiesuan" style="display: none; height: 70px;background: #F1EEED; width: 100%;bottom:0; position: fixed;">
+			<div class="box">
+				<p class="spsl">商品数量：<strong>0</strong>件</p>
+				<p class="yfj"><strong>应付金额</strong>(不含运费)：</p>
+				<p class="money">¥<strong>0</strong></p>
+				<p class="qujs">去结算</p>
+			</div>
+		</div>
+	</body>
+</html>
+<script type="text/javascript">
+	$(".header_top").load("public.html  #header-t-wrap",function(){
+		$("#header-t").css("width","960px");
+		
+	})
+	$(".footer").load("public.html .footer-bottom");
+</script>
+<script type="text/javascript">
+	//温馨提示消失
+	$(".warn_tip strong").click(function(){
+		$(".warn_tip").css("visibility","hidden");
+	})
+	
+	
+	$(function(){
+		$.ajax({
+			type:"get",
+			url:"http://127.0.0.1/yesmywine/json/qianggou.json",
+			async:true,
+			success: function(){
+				var str="";
+				var arr=[];
+				arr=getCookie("shoplist");
+				for(var i=0;i<arr.length;i++){
+					str+=
+					'<div class="p_info" data-name="'+arr[i].name+'" data-count="'+arr[i].count+'" data-price="'+arr[i].price+'" data-img="'+arr[i].img+'"  >'+
+						'<li style="width: 80px;"><input type="checkbox" class="zx"/></li>'+
+						'<li class="p_infoname" style="width: 400px;"><a href="../index.html"><img src="../img/qiagou/'+ arr[i].img +'" alt="" /></a>'+arr[i].name+'</li>'+
+						'<li class="p_price" style="width: 80px;">¥<strong>'+ arr[i].price +'</strong></li>'+
+						'<li class="p_num" style="width: 150px;"><span class="num_btn">+</span>'+
+							'<strong>'+ arr[i].count +'</strong>'+
+							'<span class="num_btn">-</span>'+
+						'</li>'+
+						'<li class="sum" style="width: 80px;">¥<strong>'+ arr[i].price*arr[i].count +'</strong></li>'+
+						'<li class="delete" style="width: 140px;">'+
+							'<a href="" class="save">加入收藏夹</a><br />'+
+							'<a  class="deletebtn" style="cursor:pointer">删除</a>'+
+						'</li>'+
+					'</div>'
+				}
+				if(str){
+					$(".content").html(str);
+				}else{
+					return;
+				}
+				
+				$(".save").click(function(){
+					$(this).html("已收藏");
+					return false;
+				})
+				
+				//结算框出现
+				function jiesuanShow(){
+					if($(".zx").prop("checked")){
+						$("#jiesuan").show();
+					}else{
+						$("#jiesuan").hide();
+					}
+				}
+				
+				//全选
+				$(".qx").click(function(){
+					$(".zx,.qx").prop("checked",$(this).prop("checked"));
+					sumNum();
+					settlement();
+					jiesuanShow();
+				})
+				$(".zx").click(function(){
+					sumNum();
+					settlement();
+					jiesuanShow();
+				})
+				function kong(){
+					if(!$(".content").html()){
+						$(".content").html('购物车空空如也，快去<a href="http://127.0.0.1/yesmywine/index.html" style="color:#650001;font-size: 16px;text-decoration: underline;">首页</a>选购吧！');
+					}
+				}
+				
+				//批量删除
+				$(".delete_all_btn").click(function(){
+					if($(".zx").prop("checked")){
+						if(confirm("确定要删除吗？")){
+							$(".zx:checked").each(function(){
+								var pimg=$(this).parent().parent().data("img");
+								var price=$(this).parent().parent().data("price");
+								for(var i=0;i<arr.length;i++){
+									if(pimg==arr[i].img&&price==arr[i].price){
+										arr.splice(i,1);//删除cookie
+										setCookie("shoplist",JSON.stringify(arr));
+										$(this).parent().parent().remove();
+									
+									}
+								}
+								sumNum();
+								kong();
+								settlement();
+							})
+						}else{
+							retrun;
+						
+						}
+					}
+				})
+				
+				//删除
+				$(".deletebtn").click(function(){
+					if(confirm("确定要删除吗？")){
+						var pimg=$(this).parent().parent().data("img");
+						var price=$(this).parent().parent().data("price");
+						for(var i=0;i<arr.length;i++){
+							if(pimg==arr[i].img&&price==arr[i].price){
+								arr.splice(i,1);//删除cookie
+								setCookie("shoplist",JSON.stringify(arr));
+								$(this).parent().parent().remove();
+							
+							}
+						}
+						//console.log(11)
+						sumNum();
+						settlement();
+						kong();
+						
+					}else{
+						return;
+					}
+				})
+				
+				//加减操作
+				$(".num_btn").click(function(){
+					var num=$(this).parent().find("strong").html();
+					var price=$(this).parent().parent().data("price");
+					var pimg=$(this).parent().parent().data("img");
+					for(var i in arr){
+						if(price==arr[i].price&&pimg==arr[i].img){
+							if($(this).html()=="-"&&num==1){
+								$("this").off("click");
+								return;
+							}else{
+								$("this").off("click");
+							}
+							$(this).html()=="+"?arr[i].count++:arr[i].count--;
+							setCookie("shoplist",JSON.stringify(arr));
+							$(this).parent().find("strong").html(arr[i].count);
+							$(this).parent().parent().find(".sum").find("strong").html(arr[i].count*price);
+						}
+					}
+					sumNum();
+					settlement();
+				})
+				
+				
+				//数量num
+				sumNum();
+				settlement();
+				function sumNum(){
+					var sumNum=0;
+					if($(".p_num").size()!=0){
+						$(".p_num").each(function(){
+							sumNum+=parseInt( $(this).find("strong").html() );
+							$(".title").find("i").html(sumNum);
+					
+						})
+					}else{
+						$(".title").find("i").html(0);
+					}
+				}
+				//结算
+				function settlement(){
+					var num=0;
+					var sumPrice=0;
+					$(".zx:checked").each(function(){
+						num+=parseInt( $(this).parent().parent().find(".p_num").find("strong").html() );
+						sumPrice+=parseInt( $(this).parent().parent().find(".sum").find("strong").html() );
+					})
+					$(".spsl").find("strong").html(num);
+					$(".money").find("strong").html(sumPrice);
+					$(".all_num").html(num);
+					$(".all_sum").html(sumPrice);
+				}
+			}
+		});
+	})
+</script>

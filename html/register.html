@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="../css/pulic.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/less/reg-log.css"/>
+		<script type="text/javascript" src="../js/jquery-1.11.1.min.js"></script>
+	</head>
+	<body>
+		<div id="header">
+			<div id="header-wrap">
+				<img id="logo" src="../img/logo (1).png" style="float: left;" />
+				<img src="../img/head_right.jpg" style="float: right;"/>
+			</div>
+		</div>
+		<div id="main">
+			<div class="main-wrap">
+				<form  class="register"   name="register">
+					<a href="#" id="othreg">您可以使用QQ、支付宝、新浪微博登录</a>
+					<p class="title"><strong>注册也买酒</strong></p>
+					<p class="phone-wrap">手机号码：<input type="text" name="" id="phone" value="请输入手机号"/></p>
+					<h2 class="phone-pro hide" id="phone-pro1"><img src="../img/images/close_03.jpg"/ style="display: inline-block;"><span class="ph-verify">请输入正确的手机号</span></h2>
+					<p class="code-wrap">验证码：<input type="text" name="bqke" value="请输入验证码" data-name="bqke" id="secu_code"/><img src="../img/rand/rand(0).jpg" class="codeImg"/></p>
+					<h2 class="phone-pro hide" id="phone-pro2"><img src="../img/images/close_03.jpg"/ style="display: inline-block;"><span class="ph-verify">请输入正确的验证码</span></h2>
+					<p class="code2-wrap">短信验证码：<input type="text" name="" value="请输入验证码" id="code2"/><span style="font-size: 0;"></span><a href="#" id="get-code">获取短信验证码</a></p>
+					<h2 class="phone-pro hide" id="phone-pro3"><img src="../img/images/close_03.jpg"/ style="display: inline-block;"><span class="ph-verify">请输入正确的验证码</span></h2>
+					<p class="pwd-wrap">密&emsp;&emsp;码：<input type="text" name="" value="密码请设为6-16位数字或字母" id="pwd"/></p>
+					<h2 class="phone-pro hide" id="phone-pro4"><img src="../img/images/close_03.jpg"/ style="display: inline-block;"><span class="ph-verify">请输入密码</span></h2>
+					<p class="qpwd">密码确认：<input type="text" name="" value="再次输入登录密码" id="pwd2"/></p>
+					<h2 class="phone-pro hide" id="phone-pro5"><img src="../img/images/close_03.jpg"/ style="display: inline-block;"><span class="ph-verify">请输入正确的密码</span></h2>
+					<p class="vip-w"><input type="checkbox" name="" id="vipword"/>我有VIP升级码</p>
+					<p class="term-l"><input type="checkbox" checked id="term"/>我已满18周岁并接受<a href="#">《也买酒服务条款》</a></p>
+					
+					<input type="button" value="注册成功" id="btn"/>
+				</form>
+			</div>
+		</div>
+		<div id="footer">
+			
+		</div>
+		
+	</body>
+</html>
+<script type="text/javascript">
+	$("#footer").load("public.html .footer-bottom",function(){
+		/*$("#tb2")[0].src="../img/lead.jpg";*/
+	});
+</script>
+<script type="text/javascript">
+	
+	function rand(min,max){
+		return Math.floor(Math.random()*(max-min+1)+min)
+	}
+	
+$(function(){
+	
+	//验证手机号
+	var pflag=null;
+	$("#phone").on({
+		focus: function(){
+			if($(this).val()=="请输入手机号"){
+				$(this).val("");
+			}else{
+				return;
+			}
+		},
+		blur: function(){
+			var reg=/^[13|15|17|18]\d{9}$/;
+			if(!$(this).val()){
+				$(this).val("请输入手机号");
+			}else if(reg.test($(this).val())){
+				
+				pflag=true;
+				console.log(pflag);
+				$("#phone-pro1").addClass("hide");
+				/*$.ajax({
+					type:"get",
+					url: "http://datainfo.duapp.com/shopdata/userinfo.php" ,
+					data: {
+						"status" :"register",
+						"userID" :$("#phone").val(),
+						"pa"
+					}
+				})*/
+			}else{
+				$("#phone-pro1").removeClass("hide");
+				pflag=false;
+			}
+		}
+	})
+	
+	//验证验证码替换
+	$(".codeImg").click(function(){
+		$.ajax({
+			type:"get",
+			url:"http://127.0.0.1/yesmywine/json/randCode.json" ,
+			success: function(res){
+				//console.log(typeof res)
+				var arr=res;
+				var code=arr[rand(0,(arr.length-2))];
+				$(".codeImg")[0].src="../img/rand/"+code.img;
+				$("#secu_code")[0].name=code.name;
+				//console.log($("#secu_code")[0].name);
+			}
+		});
+		
+	})
+	//验证码
+	var codeflag=null;
+	$("#secu_code").on({
+		focus: function(){
+			if($(this).val()=="请输入验证码"){
+				$(this).val("");
+			}else{
+				return;
+			}
+		},
+		blur: function(){
+			
+			if(!$(this).val()){
+				$(this).val("请输入验证码");
+			}else if($(this).val()==$(this)[0].name){
+				codeflag=true;
+				$("#phone-pro2").addClass("hide");
+				console.log(codeflag);
+			}else{
+				$("#phone-pro2").removeClass("hide");
+				codeflag=false;
+			}
+		}
+	})
+	//短信验证码
+	var code2flag=null;
+	$("#code2").on({
+		focus: function(){
+			if($(this).val()=="请输入验证码"){
+				$(this).val("");
+			}else{
+				return;
+			}
+		},
+		blur: function(){
+			
+			if(!$(this).val()){
+				$(this).val("请输入验证码");
+			}else if($(this).val()==$("#secu_code")[0].name){
+				code2flag=true;
+				$("#phone-pro3").addClass("hide");
+				console.log(code2flag);
+			}else{
+				$("#phone-pro3").removeClass("hide");
+				code2flag=false;
+			}
+		}
+	})
+	//密码设置
+	var pwdflag=null;
+	$("#pwd").on({
+		focus: function(){
+			if($(this).val()=="密码请设为6-16位数字或字母"){
+				$(this).val("");
+			}else{
+				return;
+			}
+		},
+		blur: function(){
+			var reg=/^[\d|a-z|A-Z]{6,16}$/;
+			if(!$(this).val()){
+				$(this).val("密码请设为6-16位数字或字母");
+			}else if(reg.test($(this).val())){
+				pwdflag=true;
+				$("#phone-pro4").addClass("hide");
+				console.log(pwdflag);
+			}else{
+				$("#phone-pro4").removeClass("hide");
+				pwdflag=false;
+			}
+		}
+	})
+	//确认密码
+	var pwd2flag=null;
+	$("#pwd2").on({
+		focus: function(){
+			if($(this).val()=="再次输入登录密码"){
+				$(this).val("");
+			}else{
+				return;
+			}
+		},
+		blur: function(){
+			
+			if(!$(this).val()){
+				$(this).val("再次输入登录密码");
+			}else if($(this).val()==$("#pwd").val()){
+				pwd2flag=true;
+				$("#phone-pro5").addClass("hide");
+				console.log(pwd2flag);
+			}else{
+				$("#phone-pro5").removeClass("hide");
+				pwd2flag=false;
+			}
+		}
+	})
+	
+	//注册
+	$("#btn").click(function(){
+		//function formReturn(){
+			if(pflag&&pwd2flag&&pwdflag&&code2flag&&codeflag){
+				
+				
+				
+				$.ajax({
+					type:"get",
+					url: "http://datainfo.duapp.com/shopdata/userinfo.php" ,
+					data: {
+						"status" :"register",
+						"userID" :$("#phone").val(),
+						"password" :$("#pwd").val()
+					},
+					success: function(res){
+						switch(res){
+							case "0" : $("#phone-pro1").removeClass("hide");break;
+							case "1" : $("#phone-pro1").addClass("hide");location.href="http://127.0.0.1/yesmywine/index.html";break;
+							case "2" : $("#phone-pro1").removeClass("hide");break;
+						}
+					}
+				})
+			}
+		//}
+	})
+})	
+	
+		
+	
+</script>

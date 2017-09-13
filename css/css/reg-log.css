@@ -1,0 +1,262 @@
+@charset "utf-8";
+/* CSS Document */
+html,
+body,
+ul,
+li,
+ol,
+dl,
+dd,
+dt,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+form,
+fieldset,
+legend,
+img {
+  margin: 0;
+  padding: 0;
+}
+fieldset,
+img {
+  border: none;
+}
+img {
+  display: block;
+}
+ul,
+ol {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+}
+html,
+body {
+  width: 100%;
+  height: 100%;
+  font-family: "微软雅黑";
+}
+#header {
+  background: white;
+  border-bottom: 2px solid #bc0e31 ;
+  height: 97px;
+}
+#header #header-wrap {
+  padding: 15px 0 25px 0;
+  height: 58px;
+  width: 1200px;
+  margin: 0 auto;
+}
+#header #header-wrap #logo {
+  float: left;
+}
+#header #header-wrap .head_right {
+  float: right;
+}
+.hide {
+  display: none;
+}
+.show {
+  display: block;
+}
+#main {
+  min-height: 630px;
+  border-bottom: 1px solid #CCC;
+}
+#main .main-wrap {
+  position: relative;
+  width: 1200px;
+  min-height: 630px;
+  margin: 0 auto;
+  background: url(../../img/register_ads.jpg) no-repeat center right;
+}
+#main .main-wrap .register {
+  box-sizing: border-box;
+  position: absolute;
+  left: 0px;
+  top: 20px;
+  width: 400px;
+  min-height: 400px;
+  border: 1px solid #d2d2ce;
+  background: #f8f8f5;
+  padding: 8px 16px;
+}
+#main .main-wrap .register p {
+  float: right;
+  overflow: hidden;
+  width: 360px;
+  height: 40px;
+}
+#main .main-wrap .register .title {
+  width: 355px;
+  height: 48px;
+  float: none;
+  margin: 0 auto;
+  overflow: hidden;
+  border-bottom: 1px solid #d2d2ce;
+  line-height: 48px;
+}
+#main .main-wrap .register .title strong {
+  font-size: 14px;
+}
+#main .main-wrap .register #othreg {
+  position: absolute;
+  top: 40px;
+  right: 16px;
+}
+#main .main-wrap .register .phone-wrap {
+  margin-top: 25px;
+  height: 42px ;
+  color: #363636;
+  font-size: 14px;
+  line-height: 42px;
+  width: 360px;
+}
+#main .main-wrap .register .phone-wrap #phone {
+  width: 285px;
+  height: 38px;
+  display: inline-block;
+  border: 2px solid;
+  border-color: #9a9a9a #eee #eee #9a9a9a;
+  background: white ;
+  color: #999;
+  font-size: 14px;
+}
+#main .main-wrap .register .phone-pro {
+  height: 20px;
+  float: right;
+  width: 290px;
+  line-height: 20px;
+  margin-bottom: 10px ;
+}
+#main .main-wrap .register .phone-pro .ph-verify {
+  color: red;
+  font-weight: normal;
+  font-size: 12px;
+}
+#main .main-wrap .register .code-wrap {
+  margin-top: 10px;
+  height: 42px ;
+  color: #363636;
+  font-size: 14px;
+  line-height: 42px;
+  width: 340px;
+}
+#main .main-wrap .register .code-wrap #secu_code {
+  width: 180px;
+  height: 38px;
+  display: inline-block;
+  border: 2px solid;
+  border-color: #9a9a9a #eee #eee #9a9a9a;
+  background: white ;
+  color: #999;
+  font-size: 14px;
+}
+#main .main-wrap .register .code-wrap .codeImg {
+  display: inline-block;
+  float: right;
+  margin-top: 5px;
+}
+#main .main-wrap .register .code2-wrap {
+  margin-top: 8px;
+  margin-bottom: 10px;
+  height: 42px ;
+  color: #363636;
+  font-size: 14px;
+  line-height: 42px;
+  width: 370px;
+}
+#main .main-wrap .register .code2-wrap #get-code {
+  overflow: hidden;
+  display: block;
+  float: right;
+  border-radius: 3px;
+  width: 100px;
+  height: 40px;
+  background: orangered;
+  line-height: 40px;
+  text-align: center;
+  font-size: 14px;
+  color: white;
+}
+#main .main-wrap .register .code2-wrap #code2 {
+  width: 180px;
+  height: 38px;
+  display: inline-block;
+  border: 2px solid;
+  border-color: #9a9a9a #eee #eee #9a9a9a;
+  background: white ;
+  color: #999;
+  font-size: 14px;
+}
+#main .main-wrap .register .pwd-wrap {
+  margin-top: 5px;
+  height: 42px ;
+  color: #363636;
+  font-size: 14px;
+  line-height: 42px;
+  min-width: 350px;
+}
+#main .main-wrap .register .pwd-wrap #pwd {
+  width: 285px;
+  height: 38px;
+  display: inline-block;
+  border: 2px solid;
+  border-color: #9a9a9a #eee #eee #9a9a9a;
+  background: white ;
+  color: #999;
+  font-size: 14px;
+  float: right;
+}
+#main .main-wrap .register .qpwd {
+  margin-top: 10px;
+  height: 42px ;
+  color: #363636;
+  font-size: 14px;
+  line-height: 42px;
+  min-width: 350px;
+}
+#main .main-wrap .register .qpwd #pwd2 {
+  width: 285px;
+  height: 38px;
+  display: inline-block;
+  border: 2px solid;
+  border-color: #9a9a9a #eee #eee #9a9a9a;
+  background: white ;
+  color: #999;
+  font-size: 14px;
+  float: right;
+}
+#main .main-wrap .register .vip-w {
+  height: 30px ;
+  color: #363636;
+  font-size: 12px;
+  line-height: 30px;
+  width: 300px;
+}
+#main .main-wrap .register .term-l {
+  height: 30px ;
+  color: #363636;
+  font-size: 12px;
+  line-height: 30px;
+  width: 300px;
+  margin-bottom: 10px;
+}
+#main .main-wrap .register #btn {
+  display: block;
+  width: 355px;
+  height: 45px;
+  margin: 0 auto;
+  background: #bb0e30;
+  color: white;
+  font-size: 16px;
+  line-height: 45px;
+  border-radius: 3px;
+  border: 0;
+}

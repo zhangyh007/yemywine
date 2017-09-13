@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="../css/pulic.css" type="text/css"/>
+		<script src="../js/jquery-1.11.1.min.js"></script>
+	</head>
+	<body>
+		<div id="header">
+			
+		</div>
+		<div class="nav">
+			
+		</div>
+		<div class="main">
+			
+		</div>
+		<div id="footer">
+			
+		</div>
+	</body>
+</html>
+<script type="text/javascript">
+	$("#header").load("public.html  #header-t-wrap",function(){
+		$("#header-t").css("width","960px");
+	})
+	$("#footer").load("public.html .footer-top,.footer-center,.footer-bottom",function(){
+		$("#footer-top-wrap").css("width","960px");
+		$(".footer-promise").css("width","320px");
+		$(".footer-service").css("width","320px");
+		$(".footer-serv").css("width","95px")
+		$(".footer-focus").css("width","320px");
+		$(".erweima").css("margin","20px 0 25px 0")
+	})
+	
+</script>

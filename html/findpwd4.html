@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="../js/jquery-1.11.1.min.js"></script>
+		
+		<link rel="stylesheet" href="../css/less/findpwd.css" />
+	</head>
+	<body bgcolor="#ebebe8">
+		<div id="header_wrap">
+			<div id="header">
+				<img src="../img/logo2.png" style=" height:70px;margin-bottom: 10px;"/>
+				<img src="../img/logo.png"/>
+			</div>
+		</div>
+		
+			<div id="section" style="height: 350px;">
+				<img src="../img/findpwd_bg.jpg" style=" display:block; margin: 0 auto;"/>
+				<p class="pwd_process" style="background-position-y: -75px;"></p>
+				<div id="findstep">
+					<p class="findway" style="text-align: center; position: relative;" >
+						<img src="../img/images/ok_03.jpg" style="position: absolute;top: -10px;"/><strong >&emsp;&emsp;&emsp;恭喜你，新密码设置成功！</strong></p>
+				</div>
+				<div class="warn">
+					<p id="warnword" style="text-align: center;"><span id="jishi" style="color: red;">3</span>秒钟后自动跳转至首页</p>
+					
+				</div>
+			</div>
+		
+		<div id="footer"></div>
+	</body>
+</html>
+<script type="text/javascript">
+	window.onload=function(){
+		var timer=null;
+		var t=3;
+		timer=setInterval(function(){
+			t--;
+			if(t<0){
+				t=0
+				clearInterval(timer);
+				location.href="http://127.0.0.1/yesmywine/index.html";
+			}
+			document.getElementById("jishi").innerHTML=t;
+		},1000)
+	}
+</script>

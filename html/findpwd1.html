@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="../js/jquery-1.11.1.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="../css/pulic.css"/>
+		<link rel="stylesheet" href="../css/less/findpwd.css" />
+	</head>
+	<body bgcolor="#ebebe8">
+		<div id="header_wrap">
+			<div id="header">
+				<img src="../img/logo2.png" style=" height:70px;margin-bottom: 10px;"/>
+				<img src="../img/logo.png"/>
+			</div>
+		</div>
+		
+			<div id="section">
+				<img src="../img/findpwd_bg.jpg" style=" display:block; margin: 0 auto;"/>
+				<p class="pwd_process" ></p>
+				<div id="findstep">
+					<p class="findway"><input type="radio" checked="checked"/>&nbsp;通过账号找回&emsp;
+					<input type="radio" />&nbsp;通过绑定手机或邮箱找回
+					</p>
+					<p class="txt"><input type="text" value="   请输入您的账号" class="text" /></p>
+					<input type="button" value="下一步" id="btn"/>
+				</div>
+				<div class="warn">
+					<p id="warnword">注意：</p>
+					<p id="tip">
+						密码找回的账户必须是在也买酒注册的账户。<br />
+						如果使用合作网站的账户登录的无法在此找回密码，需要去合作网站修改密码。
+					</p>
+				</div>
+			</div>
+		
+		<div id="footer" style="border-top: 1px solid #ccc;"></div>
+	</body>
+</html>
+<script type="text/javascript">
+	$("#footer").load("public.html .footer-bottom")
+</script>
+<script type="text/javascript">
+	$(".text").on({
+			focus: function(){
+				if($(this).val()=="   请输入您的账号"){
+					$(this).val("");
+				}else{
+					return;
+				}
+			},
+			blur: function(){
+				
+				if(!$(this).val()){
+					$(this).val("   请输入您的账号");
+				}else{
+					$("#btn").click(function(){
+						location.href="http://127.0.0.1/yesmywine/html/findpwd2.html";
+					})
+				}
+			}
+		})
+</script>

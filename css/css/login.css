@@ -1,0 +1,86 @@
+#main {
+  min-height: 570px;
+  border-bottom: 1px solid #CCC;
+}
+#main .main-wrap {
+  position: relative;
+  width: 1200px;
+  min-height: 570px;
+  margin: 0 auto;
+  background: url(../../img/register_ads.jpg) no-repeat center left;
+}
+#main .main-wrap .bg_log {
+  position: absolute;
+  left: 50px;
+  top: 50px;
+}
+#main .main-wrap #wrap {
+  margin-top: 35px;
+  float: right;
+  width: 400px;
+  min-height: 500px;
+  background: white;
+}
+#main .main-wrap .myform {
+  padding: 25px 0 0 35px;
+  box-sizing: border-box;
+  display: block;
+  width: 400px;
+  min-height: 340px;
+  border: 1px solid #d2d2ce;
+  border-bottom: 1px dashed #d2d2ce;
+  background: white;
+}
+#main .main-wrap .myform input {
+  overflow: hidden;
+  width: 300px;
+  height: 30px;
+  border: 1px  #666 solid;
+  margin: 9px 0;
+  color: #999;
+}
+#main .main-wrap .myform #field {
+  border-top: 1px #d2d2ce dashed;
+  height: 50px;
+  width: 320px;
+}
+#main .main-wrap .myform #autologin {
+  width: 12px;
+  height: 12px;
+}
+#main .main-wrap .myform #btn {
+  background: #d50000;
+  color: white;
+  font-size: 20px;
+  height: 40px;
+  border-radius: 4px;
+  line-height: 40px;
+  border: 0;
+}
+#main .main-wrap #otherway {
+  box-sizing: border-box;
+  overflow: hidden;
+  width: 400px;
+  height: 100px;
+  border: 1px solid #d2d2ce;
+  border-top: 0;
+  padding: 10px 0 0 35px;
+}
+#main .main-wrap #otherway .title {
+  color: #999;
+  margin-bottom: 12px;
+}
+#main .main-wrap #otherway a {
+  display: inline-block;
+  width: 32px;
+  height: 33px;
+  margin-right: 10px;
+  background: url(../../img/icons.png) no-repeat -7px -11px;
+}
+.phone-pro {
+  margin: 0 0 5px 0;
+}
+.phone-pro .ph-verify {
+  color: red;
+  font-weight: normal;
+}
