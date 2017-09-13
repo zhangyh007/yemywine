@@ -16,7 +16,7 @@ $(function(){
 	//lunbo1 轮播1
 	$.ajax({
 		type:"get",
-		url:"http://127.0.0.1/yesmywine/json/lunbo.json",
+		url:"json/lunbo.json",
 		async:true,
 		success: function(res){
 			var html1="";
@@ -72,7 +72,7 @@ $(function(){
 	//lunbo2 轮播2
 	$.ajax({
 		type:"get",
-		url:"http://127.0.0.1/yesmywine/json/lunbo.json",
+		url:"json/lunbo.json",
 		async:true,
 		success: function(res){
 			var html1="";
@@ -128,7 +128,7 @@ $(function(){
 	//lunbo3 轮播3
 	$.ajax({
 		type:"get",
-		url:"http://127.0.0.1/yesmywine/json/lunbo.json",
+		url:"json/lunbo.json",
 		async:true,
 		success: function(res){
 			var html1="";

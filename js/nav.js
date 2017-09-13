@@ -23,7 +23,7 @@
 	</ul>*/
 	$.ajax({
 		type: "get" ,
-		url: "http://127.0.0.1/yesmywine/json/nav.json",
+		url: "json/nav.json",
 		success: function(res){
 			
 			var str="";

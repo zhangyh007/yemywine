@@ -23,7 +23,7 @@ $(function(){
 	
 	$.ajax({
 		type:"get",
-		url:"http://127.0.0.1/yesmywine/json/qianggou.json",
+		url:"json/qianggou.json",
 		success: function(res){
 			var html="";
 			//alert(0)
@@ -33,7 +33,7 @@ $(function(){
 					
 					<p class="qiang" style="display: ${res.qianggou.list[i].qiang};"></p>
 					<div class="img">
-						<a href="http://127.0.0.1/yesmywine/html/goods_all.html?pimg=${res.qianggou.list[i].img}&price=${res.qianggou.list[i].price}&soldNum=${res.qianggou.list[i].soldNum}&pname=${res.qianggou.list[i].name}"  target="_blank">
+						<a href="html/goods_all.html?pimg=${res.qianggou.list[i].img}&price=${res.qianggou.list[i].price}&soldNum=${res.qianggou.list[i].soldNum}&pname=${res.qianggou.list[i].name}"  target="_blank">
 						<img src="img/qiagou/${res.qianggou.list[i].img}"/>
 						</a>
 					</div>
@@ -77,7 +77,7 @@ $(function(){
 	
 	$.ajax({
 		type:"get",
-		url:"http://127.0.0.1/yesmywine/json/qianggou.json",
+		url:"json/qianggou.json",
 		success : function(res){
 			var html="";
 			for(var i in res.miao.list){
@@ -108,7 +108,7 @@ $(function(){
 	//专题栏
 		$.ajax({
 			type:"get",
-			url:"http://127.0.0.1/yesmywine/json/qianggou.json",
+			url:"json/qianggou.json",
 			success: function(res){
 				var html1="";
 				var html2="";
@@ -130,7 +130,7 @@ $(function(){
 						`<div class="qigou">
 							<p class="qiang" style="display: ${one.list[i].qiang};"></p>
 							<div class="img">
-								<a href="http://127.0.0.1/yesmywine/html/goods_all.html?pimg=${one.list[i].img}&price=${one.list[i].price}&soldNum=${one.list[i].soldNum}&pname=${one.list[i].name}"  target="_blank">
+								<a href="html/goods_all.html?pimg=${one.list[i].img}&price=${one.list[i].price}&soldNum=${one.list[i].soldNum}&pname=${one.list[i].name}"  target="_blank">
 								<img src="img/qiagou/${one.list[i].img}"/>
 								</a>
 							</div>
@@ -157,7 +157,7 @@ $(function(){
 						`<div class="qigou">
 							<p class="qiang" style="display: ${two.list[j].qiang};"></p>
 							<div class="img">
-								<a href="http://127.0.0.1/yesmywine/html/goods_all.html?pimg=${two.list[j].img}&price=${two.list[j].price}&soldNum=${two.list[j].soldNum}&pname=${two.list[j].name}"  target="_blank">
+								<a href="html/goods_all.html?pimg=${two.list[j].img}&price=${two.list[j].price}&soldNum=${two.list[j].soldNum}&pname=${two.list[j].name}"  target="_blank">
 								<img src="img/qiagou/${two.list[j].img}"/>
 								</a>
 							</div>
@@ -185,7 +185,7 @@ $(function(){
 						`<div class="qigou">
 							<p class="qiang" style="display: ${two2.list[m].qiang};"></p>
 							<div class="img">
-								<a href="http://127.0.0.1/yesmywine/html/goods_all.html?pimg=${two2.list[m].img}&price=${two2.list[m].price}&soldNum=${two2.list[m].soldNum}&pname=${two2.list[m].name}"  target="_blank">
+								<a href="html/goods_all.html?pimg=${two2.list[m].img}&price=${two2.list[m].price}&soldNum=${two2.list[m].soldNum}&pname=${two2.list[m].name}"  target="_blank">
 								<img src="img/qiagou/${two2.list[m].img}"/>
 								</a>
 							</div>
@@ -213,7 +213,7 @@ $(function(){
 						`<div class="qigou">
 							<p class="qiang" style="display: ${three.list[n].qiang};"></p>
 							<div class="img">
-								<a href="http://127.0.0.1/yesmywine/html/goods_all.html?pimg=${three.list[n].img}&price=${three.list[n].price}&soldNum=${three.list[n].soldNum}&pname=${three.list[n].name}"  target="_blank">
+								<a href="html/goods_all.html?pimg=${three.list[n].img}&price=${three.list[n].price}&soldNum=${three.list[n].soldNum}&pname=${three.list[n].name}"  target="_blank">
 								<img src="img/qiagou/${three.list[n].img}"/>
 								</a>
 							</div>
@@ -240,7 +240,7 @@ $(function(){
 						`<div class="qigou">
 							<p class="qiang" style="display: ${three2.list[p].qiang};"></p>
 							<div class="img">
-								<a href="http://127.0.0.1/yesmywine/html/goods_all.html?pimg=${three2.list[p].img}&price=${three2.list[p].price}&soldNum=${three2.list[p].soldNum}&pname=${three2.list[p].name}"  target="_blank">
+								<a href="html/goods_all.html?pimg=${three2.list[p].img}&price=${three2.list[p].price}&soldNum=${three2.list[p].soldNum}&pname=${three2.list[p].name}"  target="_blank">
 								<img src="img/qiagou/${three2.list[p].img}"/>
 								</a>
 							</div>
