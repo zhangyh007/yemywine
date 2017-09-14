@@ -202,7 +202,8 @@
 }
 #jiesuan .box .money {
   color: #d63939;
-  width: 60px;
+  
+  margin-right: 20px;
 }
 #jiesuan .box .money strong {
   color: #d63939;
