@@ -162,6 +162,8 @@ span#vip {
 }
 /*nav条*/
 #nav {
+	margin: 0 auto;
+	width: 100%;
   background: #d3161b;
   overflow: hidden;
 }
