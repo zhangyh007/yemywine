@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="../css/pulic.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/less/reg-log.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/less/login.css"/>
+		<script type="text/javascript" src="../js/jquery-1.11.1.min.js"></script>
+		<script src="../js/cookie.js"></script>
+	</head>
+	<body>
+		<div id="header">
+			
+		</div>
+		<div id="main">
+			<div class="main-wrap">
+				<!--<a href="#" class="bg_log"><img src="../img/loginbg.jpg"/></a>-->
+				<div id="wrap">
+					<form action="" method="post" class="myform">
+						<fieldset id="field">
+							<legend style="font-size: 20px; color: #4e3f37;">&emsp;登录也买酒&emsp;</legend>
+						</fieldset>
+						<input type="text" value="请输入E-mail或手机号" id="uid"/>
+						<h2 class="phone-pro hide" id="phone-pro1">
+							<img src="../img/images/close_03.jpg"/ style="display: inline-block;">
+							<span class="ph-verify pro_id">请输入正确的用户名</span></h2>
+						<input type="text" name="upwd" id="upwd" value="请输入密码" /><br />
+						<h2 class="phone-pro hide" id="phone-pro2">
+							<img src="../img/images/close_03.jpg"/ style="display: inline-block;">
+							<span class="ph-verify pro_pwd">请输入正确的密码</span></h2>
+						<input type="checkbox" id="autologin" />&ensp;自动登录<br />
+						<input type="button" value="登   录" id="btn"/><br />
+						<a href="http://127.0.0.1/yesmywine/html/findpwd1.html" class="forg" style="color: #3472b2;">[忘记密码？]</a>&ensp;&emsp;<a href="register.html" class="reg" style="color: #3472b2;">[注册新账号]</a>
+					</form>
+					<div id="otherway">
+						<p class="title">使用合作网站账号登录:</p>
+						<a href="#" class="way1" style="background-position-x: -111px;"></a>
+						<a href="#" class="way2" style="background-position-x: -58px;"></a>
+						<a href="#" class="way3"></a>
+						<a href="#" class="way4" style="background-position-x: -163px;"></a>
+					</div>
+				
+				</div>
+			</div>
+		</div>
+		<div id="footer">
+			
+		</div>
+	</body>
+</html>
+<script type="text/javascript">
+	$("#header").load("register.html #header");
+	$("#footer").load("public.html .footer-bottom");
+</script>
+<script type="text/javascript">
+	$(function(){
+		//if($("#autologin").css())
+		
+		
+		//验证手机号
+		var pflag=null;
+		$("#uid").on({
+			focus: function(){
+				if($(this).val()=="请输入E-mail或手机号"){
+					$(this).val("");
+				}else{
+					return;
+				}
+			},
+			blur: function(){
+				var reg=/^[13|15|17|18]\d.{9}$/;
+				if(!$(this).val()){
+					$(this).val("请输入E-mail或手机号");
+				}else if(reg.test($(this).val())){
+					
+					pflag=true;
+					//console.log(pflag);
+					$("#phone-pro1").addClass("hide");
+					$.ajax({
+						type:"get",
+						url: "register.php" ,
+						data: {
+							"ustatus" :"check",
+							"uname" :$("#uid").val(),
+							"upwd" :$("#upwd").val()
+						},
+						success: function(res){
+							console.log(res);
+							switch(res){
+								case "0" : alert("登陆成功");$("#phone-pro1").removeClass("hide");$(".ph-verify").html("用户名重复");pflag=false;break;//用户名重复
+								case "1" : break;//用户名不重复
+							}
+						}
+					})
+					
+				}else{
+					$("#phone-pro1").removeClass("hide");
+					pflag=false;
+				}
+			}
+		})
+		
+		//密码登录
+		var pwdflag=null;
+		$("#upwd").on({
+			focus: function(){
+				if($(this).val()=="请输入密码"){
+					$(this).val("");
+				}else{
+					return;
+				}
+			},
+			blur: function(){
+				var reg=/^[\d|a-z|A-Z]{6,16}$/;
+				if(!$(this).val()){
+					$(this).val("请输入密码");
+				}else if(reg.test($(this).val())){
+					pwdflag=true;
+					$("#phone-pro2").addClass("hide");
+					//console.log(pwdflag);
+				}else{
+					$("#phone-pro2").removeClass("hide");
+					pwdflag=false;
+				}
+			}
+		})
+		
+		//登录
+		$("#btn").click(function(){
+		
+				if(pflag&&pwdflag){
+					//cookie设置
+					var arrCookie=[];
+					var userinfo={
+									"uid": $("#uid").val() ,
+									"upwd": $("#upwd").val()
+								}
+					arrCookie.push(userinfo);
+					//console.log(arrCookie);
+					if($("#autologin").prop("checked")){
+						alert(1);
+						setCookie("userInfo",JSON.stringify(arrCookie),2);
+						
+					}
+					
+					$.ajax({
+						type:"get",
+						url: "register.php" ,
+						data: {
+							"ustatus" :"login",
+							"uname" :$("#uid").val(),
+							"upwd" :$("#upwd").val()
+						},
+						success: function(res){
+							switch(res){
+								case "2" : $("#phone-pro1").removeClass("hide");$("#pro_id").html("用户名不存在");break;
+								case "1" : $("#phone-pro1").addClass("hide");location.href="http://127.0.0.1/yesmywine/index.html";break;
+								case "0" : $("#phone-pro1").removeClass("hide");$("#pro_pwd").html("密码错误");break;
+							}
+						}
+					})
+				}
+			
+		})
+		
+		//自动登录cookie
+		$("#autologin").click(function(){
+			if($(this).prop("checked")){
+				//console.log(document.cookie)
+				
+				$("#uid").val(getCookie("userInfo")[0].uid);
+				$("#upwd").val(getCookie("userInfo")[0].upwd)
+			}
+		})
+	})
+</script>
